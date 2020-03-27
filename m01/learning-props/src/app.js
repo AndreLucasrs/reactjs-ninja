@@ -1,6 +1,8 @@
 'use strict'
 
 import React, { Component } from 'react'
+import LikeButton from './like-button'
+import SearchButton from './search-button'
 
 class App extends Component {
   constructor () {
@@ -13,7 +15,8 @@ class App extends Component {
   render () {
     return (
       <div className='container' onClick={() => this.setState({ text: 'André Lucas' })}>
-        {this.state.text}
+        <LikeButton />
+        <SearchButton />
       </div>
     )
   }
