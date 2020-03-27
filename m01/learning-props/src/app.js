@@ -19,14 +19,4 @@ class App extends Component {
   }
 }
 
-// const App = React.createClass({
-//   render: function () {
-//     return (
-//       <div>
-//         <Title name='André' lastName='Lucas' />
-//       </div>
-//     )
-//   }
-// })
-
 export default App
