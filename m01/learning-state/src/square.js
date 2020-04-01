@@ -2,6 +2,7 @@
 
 import React from 'react'
 
+// Componente Stateless, não manipula estado
 const Square = ({ color }) => (
   <div
     style={{
