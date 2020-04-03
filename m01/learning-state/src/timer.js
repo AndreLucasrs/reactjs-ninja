@@ -12,6 +12,11 @@ class Timer extends Component {
     this.timer
   }
 
+  // componentWillReceiveProps é executado quando o componente recebe novas propriedades
+  componentWillReceiveProps (nextProps) {
+    console.log('componentWillReceiveProps ', this.props, nextProps)
+  }
+
   // componentDidMount é executado logo apos o componente ser renderizado
   componentDidMount () {
     this.timer = setInterval(() => {
