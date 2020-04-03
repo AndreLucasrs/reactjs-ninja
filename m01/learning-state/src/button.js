@@ -9,4 +9,9 @@ const Button = ({ children, handleClick }) => (
   </button>
 )
 
+// https://reactjs.org/docs/typechecking-with-proptypes.html#proptypes
+Button.prototype = {
+  handleClick: React.PropTypes.func.isRequired
+}
+
 export default Button
