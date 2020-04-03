@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 
 class Timer extends Component {
   constructor () {
+    console.log('constructor Timer')
     super()
     this.state = {
       time: 0
@@ -14,7 +15,7 @@ class Timer extends Component {
 
   // componentWillReceiveProps é executado quando o componente recebe novas propriedades
   componentWillReceiveProps (nextProps) {
-    console.log('componentWillReceiveProps ', this.props, nextProps)
+    console.log('componentWillReceiveProps Timer ', this.props, nextProps)
   }
 
   // componentDidMount é executado logo apos o componente ser renderizado
@@ -30,6 +31,7 @@ class Timer extends Component {
   // se vc remover esse componentWillUnmount, vc ira verificar que ele da erro,
   // pos ele tenta mantar o interval funcionando, mesmo a gente não apresentando o componente
   componentWillUnmount () {
+    console.log('componentWillUnmount Timer ')
     clearInterval(this.timer)
   }
 
@@ -39,11 +41,17 @@ class Timer extends Component {
   shouldComponentUpdate (nextProps, nextState) {
     // console.log('shouldComponentUpdate', this.state, nextState)
     // return this.state.time !== nextState.time
-    console.log('shouldComponentUpdate', this.props, nextProps)
+    // console.log('shouldComponentUpdate Timer ', this.props, nextProps)
     return this.props.time !== nextProps.time
   }
 
+  // componentWillUpdate vai ser executado no momento em que o componente for renderizado novamente
+  componentWillUpdate (nextProps, nextState) {
+    console.log('componentWillUpdate Timer ', this.props, nextProps)
+  }
+
   render () {
+    console.log('render Timer')
     return <div>Timer: {this.state.time}</div>
   }
 }
