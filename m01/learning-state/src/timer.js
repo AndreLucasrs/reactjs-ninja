@@ -33,6 +33,16 @@ class Timer extends Component {
     clearInterval(this.timer)
   }
 
+  // shouldComponentUpdate sempre deve retornar true ou false, e ele sempre esta sendo executado no momento em que esta sendo renderizado o componente
+  // quando retorna true, o componente se mantem sendo atualizado, se deixar false, ele mantem o estado inicial e não é mais atualizado
+  // shouldComponentUpdate serve então para ser feito teste de valores
+  shouldComponentUpdate (nextProps, nextState) {
+    // console.log('shouldComponentUpdate', this.state, nextState)
+    // return this.state.time !== nextState.time
+    console.log('shouldComponentUpdate', this.props, nextProps)
+    return this.props.time !== nextProps.time
+  }
+
   render () {
     return <div>Timer: {this.state.time}</div>
   }
