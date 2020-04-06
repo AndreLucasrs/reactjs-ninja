@@ -6,35 +6,24 @@ class App extends Component {
   constructor () {
     super()
     this.state = {
-      value: 'Valor inicial',
+      value: '2',
       checked: false
     }
   }
 
-  // quando usasse value e onChange o input é controlavel, quando retira esse e usa defaultValue não controlavel
+  // quando usasse value e onChange o input é controlavel (controlled), quando retira esse e usa defaultValue não controlavel (uncontrolled)
   render () {
     return (
       <div>
         <form>
-          <input
-            type='text'
+          <select
             value={this.state.value}
             onChange={(e) => this.setState({ value: e.target.value })}
-          />
-
-          <label>
-            <input
-              type='checkbox'
-              value='my-checkbox'
-              checked={this.state.checked}
-              onChange={(e) => this.setState({ checked: e.target.checked })}
-            />
-            Checkbox
-          </label>
-
-          <input type='radio' name='rd' value='1' /> Radio 1
-          <input type='radio' name='rd' value='2' /> Radio 2
-
+          >
+            <option value='1'>Opção 1</option>
+            <option value='2'>Opção 2</option>
+            <option value='3'>Opção 3</option>
+          </select>
         </form>
       </div>
     )
