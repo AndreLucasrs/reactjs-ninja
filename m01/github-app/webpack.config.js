@@ -5,7 +5,6 @@ const webpack = require('webpack')
 const validate = require('webpack-validator')
 
 module.exports = validate({
-
   devtool: 'source-map',
 
   entry: [
