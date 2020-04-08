@@ -6,9 +6,9 @@ import UserInfo from './user-info'
 import Actions from './actions'
 import Repos from './repos'
 
-const AppContent = ({ userinfo, repos, starred }) => (
+const AppContent = ({ userinfo, repos, starred, handleSearch }) => (
   <div className='app'>
-    <Search />
+    <Search handleSearch={handleSearch} />
     {/*
       quando vc usa 2 exclamacoes vc esta convertendo o resultado para boleano,
       caso vc atribua 0 o valor zero sera apresentado quando vc faz dessa forma não
@@ -34,9 +34,10 @@ const AppContent = ({ userinfo, repos, starred }) => (
 )
 
 AppContent.propTypes = {
-  userinfo: PropTypes.object.isRequired,
+  userinfo: PropTypes.object,
   repos: PropTypes.array.isRequired,
-  starred: PropTypes.array.isRequired
+  starred: PropTypes.array.isRequired,
+  handleSearch: PropTypes.func.isRequired
 }
 
 export default AppContent
