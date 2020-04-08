@@ -1,6 +1,6 @@
 'use strict'
 
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 const Repos = ({ className, title, repos }) => (
   <div className={className}>
@@ -18,9 +18,9 @@ Repos.defaultProps = {
 }
 
 Repos.prototype = {
-  className: React.PropTypes.string,
-  title: React.PropTypes.string.isRequired,
-  repos: React.PropTypes.array.isRequired
+  className: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  repos: PropTypes.array.isRequired
 }
 
 export default Repos

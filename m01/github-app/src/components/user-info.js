@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-const UserInfo = () => (
+const UserInfo = ({ userInfo }) => (
   <div className='user-info'>
     <img src='https://avatars3.githubusercontent.com/u/12537847?v=4' />
     <h1 className='username'>
