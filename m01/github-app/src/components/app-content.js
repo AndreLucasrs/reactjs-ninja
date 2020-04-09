@@ -6,7 +6,7 @@ import UserInfo from './user-info'
 import Actions from './actions'
 import Repos from './repos'
 
-const AppContent = ({ userinfo, repos, starred, handleSearch }) => (
+const AppContent = ({ userinfo, repos, starred, handleSearch, getRepos, getStarred }) => (
   <div className='app'>
     <Search handleSearch={handleSearch} />
     {/*
@@ -14,10 +14,11 @@ const AppContent = ({ userinfo, repos, starred, handleSearch }) => (
       caso vc atribua 0 o valor zero sera apresentado quando vc faz dessa forma não
      */}
     {!!userinfo && <UserInfo userinfo={userinfo} />}
-    {!!userinfo && <Actions />}
+    {!!userinfo && <Actions getRepos={getRepos} getStarred={getStarred} />}
 
     {!!repos.length &&
       <Repos
+        getRepos={getRepos}
         className='repos'
         title='Repositórios'
         repos={repos}

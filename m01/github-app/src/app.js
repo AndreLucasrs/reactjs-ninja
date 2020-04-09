@@ -10,13 +10,15 @@ class App extends Component {
     this.state = {
       userinfo: null,
       repos: [],
-      starred: []
+      starred: [],
+      user: null
     }
   }
 
   handleSearch (e) {
-    const URL_API = 'https://api.github.com/users'
     const value = e.target.value
+    this.setState({ user: value })
+    const URL_API = 'https://api.github.com/users'
     const keyCode = e.which || e.keyCode
     const ENTER = 13
     if (keyCode === ENTER) {
@@ -33,19 +35,27 @@ class App extends Component {
             }
           })
         })
-      ajax().get(`${URL_API}/${value}/repos`)
-        .then((result) => {
-          this.setState({
-            repos: result
-          })
-        })
-      ajax().get(`${URL_API}/${value}/starred`)
-        .then((result) => {
-          this.setState({
-            starred: result
-          })
-        })
     }
+  }
+
+  getRepos () {
+    const URL_API = 'https://api.github.com/users'
+    ajax().get(`${URL_API}/${this.state.user}/repos`)
+      .then((result) => {
+        this.setState({
+          repos: result
+        })
+      })
+  }
+
+  getStarred () {
+    const URL_API = 'https://api.github.com/users'
+    ajax().get(`${URL_API}/${this.state.user}/starred`)
+      .then((result) => {
+        this.setState({
+          starred: result
+        })
+      })
   }
 
   render () {
@@ -55,6 +65,8 @@ class App extends Component {
         repos={this.state.repos}
         starred={this.state.starred}
         handleSearch={(e) => this.handleSearch(e)}
+        getRepos={() => this.getRepos()}
+        getStarred={() => this.getStarred()}
       />
     )
   }
