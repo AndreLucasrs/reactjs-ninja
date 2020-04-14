@@ -1,6 +1,6 @@
 'use strict'
 
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 const Actions = ({ getRepos, getStarred }) => (
   <div className='actions'>
@@ -10,8 +10,8 @@ const Actions = ({ getRepos, getStarred }) => (
 )
 
 Actions.protoTypes = {
-  getRepos: React.PropTypes.func.isRequired,
-  getStarred: React.PropTypes.func.isRequired
+  getRepos: PropTypes.func.isRequired,
+  getStarred: PropTypes.func.isRequired
 }
 
 export default Actions

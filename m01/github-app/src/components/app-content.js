@@ -19,7 +19,6 @@ const AppContent = ({ userinfo, repos, starred, isFetching, handleSearch, getRep
 
     {!!repos.length &&
       <Repos
-        getRepos={getRepos}
         className='repos'
         title='Repositórios'
         repos={repos}
@@ -27,7 +26,6 @@ const AppContent = ({ userinfo, repos, starred, isFetching, handleSearch, getRep
 
     {!!starred.length &&
       <Repos
-        starred={starred}
         className='starred'
         title='Favoritos'
         repos={starred}
@@ -37,9 +35,10 @@ const AppContent = ({ userinfo, repos, starred, isFetching, handleSearch, getRep
 
 AppContent.propTypes = {
   userinfo: PropTypes.object,
+  isFetching: PropTypes.bool.isRequired,
+  handleSearch: PropTypes.func.isRequired,
   repos: PropTypes.array.isRequired,
-  starred: PropTypes.array.isRequired,
-  handleSearch: PropTypes.func.isRequired
+  starred: PropTypes.array.isRequired
 }
 
 export default AppContent
