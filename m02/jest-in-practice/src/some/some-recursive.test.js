@@ -1,7 +1,7 @@
 'use strict'
 
 import { expect } from 'chai'
-import some from './some'
+import some from './some-recursive'
 
 it('some should be a function', () => {
   expect(some).to.be.a('function')
