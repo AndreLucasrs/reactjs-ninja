@@ -2,8 +2,15 @@
 
 const reduce = (arr, func, initialValue) => {
   let acc = initialValue
-  for (let i = 0; i < arr.length; i++) {
-    acc = func(acc, arr[i])
+  let arrCopy = arr
+
+  if (initialValue === undefined) {
+    acc = arr[0]
+    arrCopy = arr.slice(1)
+  }
+
+  for (let i = 0; i < arrCopy.length; i++) {
+    acc = func(acc, arrCopy[i], i, arrCopy)
   }
   return acc
 }
