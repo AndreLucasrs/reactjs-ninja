@@ -1,6 +1,7 @@
 'use strict'
 
 import React, { PropTypes } from 'react'
+import './search.css'
 
 const Search = ({ handleSearch, isDisabled }) => (
   <div className='search'>
