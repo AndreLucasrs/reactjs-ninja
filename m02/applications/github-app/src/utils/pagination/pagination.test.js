@@ -30,3 +30,15 @@ test('pagination({ total: 6, activePage: 1}) should return [1, 2, 3, "...", 6]',
   const result = [1, 2, 3, '...', 6]
   expect(pagination(params)).to.be.deep.equal(result)
 })
+
+test('pagination({ total: 6, activePage: 2}) should return [1, 2, 3, "...", 6]', () => {
+  const params = {total: 6, activePage: 2}
+  const result = [1, 2, 3, '...', 6]
+  expect(pagination(params)).to.be.deep.equal(result)
+})
+
+test('pagination({ total: 6, activePage: 3}) should return [1, 2, 3, 4, 5, 6]', () => {
+  const params = {total: 6, activePage: 3}
+  const result = [1, 2, 3, 4, 5, 6]
+  expect(pagination(params)).to.be.deep.equal(result)
+})
