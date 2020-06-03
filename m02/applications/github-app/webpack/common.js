@@ -1,7 +1,6 @@
 'use strict'
 
 const path = require('path')
-const webpack = require('webpack')
 
 module.exports = {
   entry: path.join(__dirname, '..', 'src', 'index'),
@@ -11,10 +10,10 @@ module.exports = {
     filename: '[name]-[hash].js'
   },
 
-  htmlPluginConfig: {
+  htmlPluginConfig: (template) => ({
     title: 'Github App',
-    template: path.join(__dirname, '..', 'src', 'html', 'template-dev.html')
-  },
+    template: path.join(__dirname, '..', 'src', 'html', template)
+  }),
 
   sandardPreLoaders: {
     test: /\.js$/,
