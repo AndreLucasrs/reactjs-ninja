@@ -29,7 +29,7 @@ module.exports = validate({
   ],
 
   module: {
-    preLoaders: [common.sandardPreLoaders],
+    preLoaders: [common.standardPreLoaders],
     loaders: [common.jsLoader, common.cssLoader]
   },
   resolve: common.resolve

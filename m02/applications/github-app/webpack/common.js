@@ -15,7 +15,7 @@ module.exports = {
     template: path.join(__dirname, '..', 'src', 'html', template)
   }),
 
-  sandardPreLoaders: {
+  standardPreLoaders: {
     test: /\.js$/,
     exclude: /node_modules/,
     include: /src/,
@@ -39,7 +39,8 @@ module.exports = {
   resolve: {
     alias: {
       src: path.join(__dirname, '..', 'src'),
-      components: path.join(__dirname, '..', 'src', 'components')
+      components: path.join(__dirname, '..', 'src', 'components'),
+      utils: path.join(__dirname, '..', 'src', 'utils')
     }
   }
 }

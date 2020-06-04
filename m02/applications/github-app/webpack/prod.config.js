@@ -25,11 +25,11 @@ module.exports = validate({
     }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new HtmlPlugin(common.htmlPluginConfig('template.html'))
+    new HtmlPlugin(common.htmlPluginConfig('template-dev.html'))
   ],
 
   module: {
-    preLoaders: [common.sandardPreLoaders],
+    preLoaders: [common.standardPreLoaders],
 
     loaders: [
       common.jsLoader, 
