@@ -2,9 +2,9 @@
 
 import React from 'react'
 
-const Dots = () => <span>...</span>
+const Dots = ({ className }) => <span className={className}>...</span>
 
-const Page = ({page, pageLink, onClick}) => {
+const Page = ({ page, pageLink, onClick }) => {
   const Component = page === '...' ? Dots : 'a'
 
   const handleClick = !onClick ? null : (e) => {
@@ -16,7 +16,7 @@ const Page = ({page, pageLink, onClick}) => {
     <Component
       href={pageLink}
       onClick={handleClick}
-    >
+      className='pagination-link'>
       {page}
     </Component>
   )

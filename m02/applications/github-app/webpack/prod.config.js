@@ -32,7 +32,7 @@ module.exports = validate({
     preLoaders: [common.standardPreLoaders],
 
     loaders: [
-      common.jsLoader, 
+      common.jsLoader,
       Object.assign({}, common.cssLoader, {
         loaders: undefined,
         loader: ExtractTextPlugin.extract(common.cssLoader.loaders[0], common.cssLoader.loaders[1])
