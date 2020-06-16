@@ -4,13 +4,17 @@ import React, { Component } from 'react'
 import AppContent from './components/app-content'
 import ajax from '@fdaciuk/ajax'
 
+const initialReposState = {
+  repos: [],
+  pagination: {}
+}
 class App extends Component {
   constructor () {
     super()
     this.state = {
       userinfo: null,
-      repos: [],
-      starred: [],
+      repos: initialReposState,
+      starred: initialReposState,
       isFetching: false
     }
     this.perPage = 3
@@ -40,8 +44,8 @@ class App extends Component {
               followers: result.followers,
               following: result.following
             },
-            repos: [],
-            starred: []
+            repos: initialReposState,
+            starred: initialReposState
           })
         })
         .always(() => {
@@ -56,12 +60,13 @@ class App extends Component {
       ajax().get(this.getGitHubApiUrl(username, type, page))
         .then((result) => {
           this.setState({
-            [type]: result.map((repo) => (
-              {
+            [type]: {
+              repos: result.map((repo) => ({
                 name: repo.name,
                 link: repo.html_url
-              }
-            ))
+              })),
+              pagination: this.state[type].pagination
+            }
           })
         })
     }
