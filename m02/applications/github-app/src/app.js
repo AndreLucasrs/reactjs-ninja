@@ -57,13 +57,13 @@ class App extends Component {
     }
   }
 
-  getRepos (type, page) {
+  getRepos (type, page = 1) {
     return (e) => {
       const username = this.state.userinfo.login
       ajax().get(this.getGitHubApiUrl(username, type, page))
         .then((result, xhr) => {
           const linkHeader = xhr.getResponseHeader('Link') || ''
-          const totalPagesMatch = linkHeader.match(/&page=(\d+)>; rel="last/)[1]
+          const totalPagesMatch = linkHeader.match(/&page=(\d+)>; rel="last/)
           this.setState({
             [type]: {
               repos: result.map((repo) => ({
