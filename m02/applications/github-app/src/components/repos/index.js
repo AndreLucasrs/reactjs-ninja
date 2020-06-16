@@ -22,15 +22,23 @@ const Repos = ({ className, title, repos, handlePagination }) => (
 )
 
 Repos.defaultProps = {
-  className: '',
-  repos: {}
+  className: ''
 }
 
 Repos.prototype = {
   className: PropTypes.string,
   title: PropTypes.string.isRequired,
   handlePagination: PropTypes.func.isRequired,
-  repos: PropTypes.object
+  repos: PropTypes.shape({
+    repos: PropTypes.arrayOf(PropTypes.shape({
+      link: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired
+    })).isRequired,
+    pagination: PropTypes.shape({
+      total: PropTypes.number,
+      activePage: PropTypes.number
+    })
+  })
 }
 
 export default Repos
