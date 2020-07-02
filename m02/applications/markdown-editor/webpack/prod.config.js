@@ -31,9 +31,18 @@ module.exports = {
 
     new webpack.optimize.CommonsChunkPlugin({
       name: 'react-build',
+      chuncks: ['main'],
       minChunks: ({ resource }) => (
-        /node_modules\/react(-dom)?\//.test(resource)
+        /node_modules\/(react(-dom)?|fbjs)\//.test(resource)
       )
+    }),
+
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      chuncks: ['main'],
+      minChunks: ({ resource }) => {
+        /node_modules/.test(resource)
+      }
     }),
 
     new HtmlPlugin(common.htmlPluginConfig),
