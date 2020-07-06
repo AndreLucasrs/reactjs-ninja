@@ -1,23 +1,29 @@
+'use strict'
+
 import React, { PropTypes } from 'react'
+
+import Button from '../button'
 
 const Header = ({ isSaving, handleRemove, handleCreate }) => (
   <header className='editor-header'>
-    <p className='save-message'>
-      {isSaving ? 'Salvando...' : 'Salvo!'}
-    </p>
+    {isSaving !== null && (
+      <p className='save-message'>
+        {isSaving ? 'Salvando...' : 'Salvo!'}
+      </p>
+    )}
 
-    <button onClick={handleCreate}>
+    <Button onClick={handleCreate} kind='success'>
         Criar Novo
-    </button>
+    </Button>
 
-    <button onClick={handleRemove}>
+    <Button onClick={handleRemove} kind='danger'>
         Remover
-    </button>
+    </Button>
   </header>
 )
 
 Header.propTypes = {
-  isSaving: PropTypes.bool.isRequired,
+  isSaving: PropTypes.bool,
   handleRemove: PropTypes.func.isRequired,
   handleCreate: PropTypes.func.isRequired
 }

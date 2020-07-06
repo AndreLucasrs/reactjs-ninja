@@ -1,0 +1,24 @@
+.button {
+    border: 0;
+    color: #fff;
+    font-weight: 700;
+    padding: 0 20;
+    transition: all 0.25s ease-in-out;
+    cursor: pointer;
+}
+
+.button.-danger {
+    background: red;
+}
+
+.button.-success {
+    background: green;
+}
+
+.button.-danger:hover {
+    background: darkred;
+}
+
+.button.-success:hover {
+    background: darkgreen;
+}
