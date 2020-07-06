@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 
 import './css/style.css'
 import marked from 'marked'
-import MarkdownEditor from 'components/editor'
+import MarkdownEditor from 'views/editor'
 
 import('highlight.js').then((hljs) => {
   marked.setOptions({
