@@ -22,6 +22,7 @@ class App extends Component {
     super()
 
     this.clearState = () => ({
+      title: '',
       value: '',
       id: v4()
     })
@@ -37,9 +38,16 @@ class App extends Component {
       this.textarea.focus()
     }
 
-    this.handleChange = (e) => {
+    // exemplo sem ser usando arrow function
+    // this.handleChange = function(field) {
+    //   return function (e) {
+    //     this.setState()
+    //   }
+    // }
+    // quando o onChange chama essa função primeiro ele executa o field e o retorno do field é a chamada da segunda função do e
+    this.handleChange = (field) => (e) => {
       this.setState({ 
-        value: e.target.value,
+        [field]: e.target.value,
         isSaving: true
       })
     }
@@ -51,7 +59,7 @@ class App extends Component {
     this.handleSave = () => {
       if (this.state.isSaving) {
         const newFile = {
-          title: 'Sem titulo',
+          title: this.state.title || 'Sem titulo',
           content: this.state.value
         }
         localStorage.setItem(this.state.id, JSON.stringify(newFile))
@@ -88,6 +96,7 @@ class App extends Component {
 
     this.handleOpenFile = (fileId) => () => {
       this.setState({
+        title: this.state.files[fileId].title,
         value: this.state.files[fileId].content,
         id: fileId
       })
@@ -126,7 +135,7 @@ class App extends Component {
         textareaRef={this.textareaRef}
         files={this.state.files}
         handleOpenFile={this.handleOpenFile}
-        title={this.state.files[this.state.id].title}
+        title={this.state.title}
       />
     )
   }
