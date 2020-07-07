@@ -96,7 +96,7 @@ class App extends Component {
   }
 
   componentDidMount () {
-    const files = Object.keys(localStorage).filter(item => item.match('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'))
+    const files = Object.keys(localStorage).filter(item => item.match(/^\w{8}-\w{4}-\w{4}-\w{4}-\w{12}$/))
     this.setState({ 
       files: files.reduce((acc, fileId) => ({
           ...acc,
