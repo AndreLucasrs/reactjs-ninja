@@ -5,7 +5,7 @@ import React, { PropTypes } from 'react'
 import './title.css'
 
 const Title = ({ children }) => (
-  <h1>{children}</h1>
+  <h1 className='large'>{children}</h1>
 )
 
 Title.propTypes = {

@@ -5,13 +5,17 @@ const { join } = require('path')
 const paths = {
   root: join(__dirname, '..'),
   src: join(__dirname, '..', 'src'),
-  dist: join(__dirname, '..', 'dist')
+  dist: join(__dirname, '..', 'dist'),
+  normalizeCss: join(__dirname, '..', 'node_modules', 'normalize.css'),
+  highlightJs: join(__dirname, '..', 'node_modules', 'highlight.js', 'styles')
 }
 
 module.exports = {
   paths,
 
-  entry: join(paths.src, 'index'),
+  entry: {
+    main: join(paths.src, 'index')
+  },
 
   output: {
     path: paths.dist,
@@ -26,7 +30,6 @@ module.exports = {
   standardPreLoader: {
     enforce: 'pre',
     test: /\.js$/,
-    exclude: /node_modules/,
     include: paths.src,
     use: {
       loader: 'standard-loader',
@@ -38,15 +41,27 @@ module.exports = {
 
   jsLoader: {
     test: /\.js$/,
-    exclude: /node_modules/,
     include: paths.src,
-    use: 'babel-loader'
+    use: {
+      loader: 'babel-loader',
+      options: {
+        babelrc: false,
+        presets: [['env', { modules: false }], 'stage-0', 'react'],
+        plugins: [
+          'react-hot-loader/babel',
+          ['transform-runtime', {
+            helpers: false,
+            polyfill: false,
+            regenerator: true
+          }]
+        ]
+      }
+    }
   },
 
   cssLoader: {
     test: /\.css$/,
-    exclude: /node_modules/,
-    include: paths.src,
+    include: [paths.src, paths.normalizeCss, paths.highlightJs],
     use: ['style-loader', 'css-loader']
   },
 
@@ -55,7 +70,7 @@ module.exports = {
     include: paths.src,
     use: {
       loader: 'file-loader',
-      query: {
+      options: {
         name: 'media/[name].[hash:8].[ext]'
       }
     }
@@ -66,18 +81,23 @@ module.exports = {
     include: paths.src,
     use: {
       loader: 'url-loader',
-      query: {
+      options: {
         limit: 10000,
         name: 'media/[name].[hash:8].[ext]'
       }
     }
   },
 
+  module: {
+    noParse: /\.min\.js$/
+  },
+
   resolve: {
     alias: {
       src: paths.src,
       components: join(paths.src, 'components'),
-      utils: join(paths.src, 'utils')
+      utils: join(paths.src, 'utils'),
+      views: join(paths.src, 'views')
     }
   }
 }
