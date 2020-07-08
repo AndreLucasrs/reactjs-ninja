@@ -60,6 +60,7 @@
     "preact-compat": "^3.14.3",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "strclass": "^2.0.9",
     "webpack-bundle-analyzer": "^2.3.1"
