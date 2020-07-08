@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { storiesOf, action } from '@kadira/storybook'
-import { Counter } from './index'
+import Counter from './index'
 
 const stories = storiesOf('Counter', module)
 
