@@ -1,38 +1,24 @@
 'use strict'
 
-import React, { Component } from 'react'
+import React from 'react'
 
-import './css/style.css'
+const App = () => (
+  <div>
+    <input type='text' />
 
-class App extends Component {
-  constructor () {
-    super()
-    this.state = { counter: 0 }
-  }
+    <ul>
+      <li style={{ textDecoration: 'line-through'}}>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
 
-  incrementCounter (state) {
-    return { counter: state.counter + 1 }
-  }
-
-  incrementCounter2 (state) {
-    return { counter: state.counter + 2 }
-  }
-
-  componentDidMount () {
-    this.setState(this.incrementCounter)
-    this.setState(this.incrementCounter)
-    this.setState(this.incrementCounter)
-    this.setState(this.incrementCounter2)
-  }
-
-  render () {
-    const { counter } = this.state
-    console.log('render:', counter)
-
-    return (
-      <div>counter: {counter}</div>
-    )
-  }
-}
+    <div>
+      <h3>Mostrar</h3>
+      <span>Todos</span> | <a href=''>Finalizados</a> | <a href=''>A fazer</a>
+    </div>
+  </div>
+)
 
 export default App
