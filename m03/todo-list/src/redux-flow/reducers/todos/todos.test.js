@@ -2,7 +2,7 @@
 
 import { expect } from 'chai'
 import deepFreeze from 'deep-freeze'
-import todos from './index'
+import todos, { initialState } from './index'
 import { ADD_TODO, TOOGLE_TODO } from './actions'
 
 it('should todo be a function', () => {
@@ -47,5 +47,35 @@ it('should toggle first todo', () => {
     { id: 0, text: 'hey', completed: true },
     { id: 1, text: 'ho', completed: false }
   ]
+  expect(todos(before, action)).to.be.deep.equal(after)
+})
+
+it('should toggle second todo', () => {
+  const before = deepFreeze([
+          { id: 0, text: 'hey', completed: false },
+          { id: 1, text: 'ho', completed: false }
+  ])
+  const action = deepFreeze({
+    type: TOOGLE_TODO,
+    payload: { id: 1 }
+  })
+  const after = [
+      { id: 0, text: 'hey', completed: false },
+      { id: 1, text: 'ho', completed: true }
+  ]
+  expect(todos(before, action)).to.be.deep.equal(after)
+})
+
+it('should return the latest state when action is unknown', () => {
+  const before = deepFreeze([{ id: 0, text: 'hey', completed: false }])
+  const action = deepFreeze({ type: 'ANYTHING' })
+  const after = deepFreeze([{ id: 0, text: 'hey', completed: false }])
+  expect(todos(before, action)).to.be.deep.equal(after)
+})
+
+it('should return initialState when state before is undefined', () => {
+  const before = undefined
+  const action = deepFreeze({})
+  const after = initialState
   expect(todos(before, action)).to.be.deep.equal(after)
 })
