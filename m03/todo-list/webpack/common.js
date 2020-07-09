@@ -56,7 +56,6 @@ module.exports = {
       }
     }]
   },
-
   cssLoader: {
     test: /\.css$/,
     include: [paths.src, paths.normalizeCss, paths.highlightJs],
