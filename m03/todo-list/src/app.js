@@ -14,11 +14,14 @@ const App = ({ todos, handleAddTodo }) => (
     {console.log('Todos ', todos)}
 
     <ul>
-      <li style={{ textDecoration: 'line-through' }}>1</li>
-      <li>2</li>
-      <li>3</li>
-      <li>4</li>
-      <li>5</li>
+      {todos.map((todo) => (
+        <li
+          key={todo.id}
+          style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
+        >
+          {todo.text}
+        </li>
+      ))}
     </ul>
 
     <div>
