@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react'
+import { connect } from 'react-redux'
 
 const App = () => (
   <div>
@@ -21,4 +22,4 @@ const App = () => (
   </div>
 )
 
-export default App
+export default connect()(App)
