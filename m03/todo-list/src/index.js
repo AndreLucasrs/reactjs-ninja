@@ -6,9 +6,9 @@ import { AppContainer } from 'react-hot-loader'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import App from './app'
-import reducers from 'reducers/todos'
+import reducer from 'reducers'
 
-const store = createStore(reducers)
+const store = createStore(reducer)
 
 const renderApp = (NextApp) => {
   render(
