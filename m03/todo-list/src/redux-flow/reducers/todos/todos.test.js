@@ -3,7 +3,7 @@
 import { expect } from 'chai'
 import deepFreeze from 'deep-freeze'
 import todos, { initialState } from './index'
-import { ADD_TODO, TOOGLE_TODO } from './actions'
+import { ADD_TODO, TOGGLE_TODO } from './actions'
 
 it('should todo be a function', () => {
   expect(todos).to.be.a('function')
@@ -40,7 +40,7 @@ it('should toggle first todo', () => {
         { id: 1, text: 'ho', completed: false }
   ])
   const action = deepFreeze({
-    type: TOOGLE_TODO,
+    type: TOGGLE_TODO,
     payload: { id: 0 }
   })
   const after = [
@@ -56,7 +56,7 @@ it('should toggle second todo', () => {
           { id: 1, text: 'ho', completed: false }
   ])
   const action = deepFreeze({
-    type: TOOGLE_TODO,
+    type: TOGGLE_TODO,
     payload: { id: 1 }
   })
   const after = [

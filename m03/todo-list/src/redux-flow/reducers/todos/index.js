@@ -1,6 +1,6 @@
 'use strict'
 
-import { ADD_TODO, TOOGLE_TODO } from './actions'
+import { ADD_TODO, TOGGLE_TODO } from './actions'
 
 export const initialState = []
 
@@ -12,7 +12,7 @@ const todos = (state = initialState, action) => {
         text: action.payload.text,
         completed: false
       })
-    case TOOGLE_TODO:
+    case TOGGLE_TODO:
       return state.map((todo) => {
         if (todo.id !== action.payload.id) {
           return todo

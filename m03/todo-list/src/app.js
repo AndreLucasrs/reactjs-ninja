@@ -2,22 +2,21 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import { addTodo } from 'reducers/todos/action-creators'
+import { addTodo, toggleTodo } from 'reducers/todos/action-creators'
 
-const App = ({ todos, handleAddTodo }) => (
+const App = ({ todos, handleAddTodo, handleToggleTodo }) => (
   <div>
     <form onSubmit={handleAddTodo} >
       <input type='text' name='todo' />
       <button type='submit'>Adicionar</button>
     </form>
 
-    {console.log('Todos ', todos)}
-
     <ul>
       {todos.map((todo) => (
         <li
           key={todo.id}
           style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
+          onClick={handleToggleTodo(todo.id)}
         >
           {todo.text}
         </li>
@@ -39,6 +38,10 @@ const mapDispatchToProps = (dispatch) => ({
   handleAddTodo: (e) => {
     e.preventDefault()
     dispatch(addTodo(e.target.todo.value))
+    e.target.todo.value = ''
+  },
+  handleToggleTodo: (id) => (e) => {
+    dispatch(toggleTodo(id))
   }
 })
 
