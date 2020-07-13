@@ -7,7 +7,8 @@ const paths = {
   src: join(__dirname, '..', 'src'),
   dist: join(__dirname, '..', 'dist'),
   normalizeCss: join(__dirname, '..', 'node_modules', 'normalize.css'),
-  highlightJs: join(__dirname, '..', 'node_modules', 'highlight.js', 'styles')
+  highlightJs: join(__dirname, '..', 'node_modules', 'highlight.js', 'styles'),
+  modules: join(__dirname, '..', 'node_modules')
 }
 
 module.exports = {
@@ -58,7 +59,7 @@ module.exports = {
   },
   cssLoader: {
     test: /\.css$/,
-    include: [paths.src, paths.normalizeCss, paths.highlightJs],
+    include: [paths.src, join(paths.modules, 'milligram')],
     use: ['style-loader', 'css-loader']
   },
 
