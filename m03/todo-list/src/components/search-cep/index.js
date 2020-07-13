@@ -11,13 +11,17 @@ class SearchCepContainer extends PureComponent {
     code: '',
     district: '',
     state: '',
-    status: 200
+    status: 200,
+    isFetching: false,
+    message: ''
   }
 
    handleSubmit = async (e) => {
     e.preventDefault()
+    this.setState({ isFetching: true })
     const cep = e.target.cep.value
     const response = await ajax().get('https://ws.apicep.com/cep.json', { code: cep })
+    this.setState({ isFetching: false })
     console.log('Result ', response)
     this.setState(response)
   }
