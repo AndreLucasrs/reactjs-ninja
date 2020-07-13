@@ -15,7 +15,22 @@ const logger = ({ dispatch, getState }) => (next) => (action) => {
   return nextAction
 }
 
-const store = createStore(reducer, applyMiddleware(logger))
+const thunk = ({ dispatch, getState }) => (next) => (action) => {
+  if (typeof action === 'function') {
+    return action(dispatch)
+  }
+  return next(action)
+}
+
+const store = createStore(reducer, applyMiddleware(logger, thunk))
+
+store.dispatch(lazyAction())
+function lazyAction () {
+  return (dispatch) => dispatch({
+    type: 'todos:ADD_TODO',
+    payload: { text: 'Lazy Action', id: '123' }
+  })
+}
 
 const renderState = () => {
   console.log('State ', store.getState())
