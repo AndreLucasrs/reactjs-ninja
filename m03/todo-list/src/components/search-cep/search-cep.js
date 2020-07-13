@@ -2,7 +2,14 @@
 
 import React from 'react'
 
-const SearchCep = () => (
+const SearchCep = ({
+    address,
+    city,
+    code,
+    district,
+    state,
+    status
+}) => (
   <div>
     <form>
       <input type='text' name='cep' placeholder='Buscar endereço' />
@@ -22,11 +29,11 @@ const SearchCep = () => (
 
     <tbody>
       <tr>
-        <td>7777777</td>
-        <td>Rua tal</td>
-        <td>Bairro tal</td>
-        <td>Cidade tal</td>
-        <td>Estado tal</td>
+        <td>{code}</td>
+        <td>{address}</td>
+        <td>{district}</td>
+        <td>{city}</td>
+        <td>{state}</td>
       </tr>
     </tbody>
   </div>
