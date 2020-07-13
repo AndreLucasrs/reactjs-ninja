@@ -8,13 +8,15 @@ const SearchCep = ({
     code,
     district,
     state,
-    status
+    status,
+    handleSubmit
 }) => (
   <div>
-    <form>
-      <input type='text' name='cep' placeholder='Buscar endereço' />
-      <button type='submit'>Buscar Endereço</button>
+    <form onSubmit={handleSubmit}>
+      <input type='text' name='cep' />
+      <button type='submit'>Buscar endereço</button>
     </form>
+
     <table>
       <thead>
         <tr>
@@ -25,18 +27,18 @@ const SearchCep = ({
           <td>Estado</td>
         </tr>
       </thead>
-    </table>
 
-    <tbody>
-      <tr>
-        <td>{code}</td>
-        <td>{address}</td>
-        <td>{district}</td>
-        <td>{city}</td>
-        <td>{state}</td>
-      </tr>
-    </tbody>
+      <tbody>
+        <tr>
+          <td>{code}</td>
+          <td>{address}</td>
+          <td>{district}</td>
+          <td>{city}</td>
+          <td>{state}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  )
+)
 
 export default SearchCep
