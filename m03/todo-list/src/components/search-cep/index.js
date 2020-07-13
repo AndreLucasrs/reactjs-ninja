@@ -20,7 +20,6 @@ class SearchCepContainer extends PureComponent {
   }
 
   render () {
-    console.log('Props ', this.props)
     return (
       <SearchCep
         {...this.state}
