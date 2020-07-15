@@ -13,11 +13,10 @@ const db = firebase.database()
 
 const videos = db.ref('videos')
 
-const videoJS = videos.push()
+const anyVideos = videos.child('-MCIun_ae-hni2Xd4Y-N')
 
-videoJS.set({
-  id: '789',
-  title: 'Novo Titulo 789'
+anyVideos.update({
+  title: 'Novo Titulo Teste'
 })
 
 // videos.on('value', (snapshot) => {
