@@ -9,6 +9,21 @@ import configureStore from './redux-flow/configure-store'
 
 const store = configureStore()
 
+const db = firebase.database()
+
+const videos = db.ref('videos')
+
+// videos.on('value', (snapshot) => {
+//   console.log('Firebase ', snapshot.val())
+// }, (error) => {
+//   console.log('ERROR ', error)
+// })
+
+
+videos.once('value').then((snapshot) => {
+  console.log('Firebase ', snapshot.val())
+})
+
 const renderApp = (NextApp) => {
   render(
     <AppContainer>
