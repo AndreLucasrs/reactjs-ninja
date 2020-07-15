@@ -11,25 +11,6 @@ const store = configureStore()
 
 const db = firebase.database()
 
-const videos = db.ref('videos')
-
-const anyVideos = videos.child('-MCIun_ae-hni2Xd4Y-N')
-
-anyVideos.update({
-  title: 'Novo Titulo Teste'
-})
-
-// videos.on('value', (snapshot) => {
-//   console.log('Firebase ', snapshot.val())
-// }, (error) => {
-//   console.log('ERROR ', error)
-// })
-
-
-videos.once('value').then((snapshot) => {
-  console.log('Firebase ', snapshot.val())
-})
-
 const renderApp = (NextApp) => {
   render(
     <AppContainer>
