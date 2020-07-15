@@ -13,6 +13,13 @@ const db = firebase.database()
 
 const videos = db.ref('videos')
 
+const videoJS = videos.push()
+
+videoJS.set({
+  id: '789',
+  title: 'Novo Titulo 789'
+})
+
 // videos.on('value', (snapshot) => {
 //   console.log('Firebase ', snapshot.val())
 // }, (error) => {
